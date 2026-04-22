@@ -15,6 +15,8 @@ interface TaskContextType {
   getTasksByTag: (tag: TaskTag) => Task[];
 }
 
+const TASKS_STORAGE_KEY = "taskr.tasks";
+
 const initialTasks: Task[] = [
   // John Smith tasks - Bed A3, Dr. Sarah Wilson
   {
@@ -493,8 +495,38 @@ const initialTasks: Task[] = [
 
 const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
+const toDate = (value?: string) => (value ? new Date(value) : undefined);
+
+const hydrateTaskDates = (task: Task): Task => ({
+  ...task,
+  createdAt: new Date(task.createdAt),
+  updatedAt: new Date(task.updatedAt),
+  dueDate: toDate(task.dueDate as unknown as string),
+  completedAt: toDate(task.completedAt as unknown as string),
+});
+
+const loadStoredTasks = (): Task[] | null => {
+  if (typeof window === "undefined") return null;
+
+  const stored = window.localStorage.getItem(TASKS_STORAGE_KEY);
+  if (!stored) return null;
+
+  try {
+    const parsed = JSON.parse(stored) as Task[];
+    if (!Array.isArray(parsed)) return null;
+    return parsed.map(hydrateTaskDates);
+  } catch {
+    return null;
+  }
+};
+
 export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [tasks, setTasks] = useState<Task[]>(() => loadStoredTasks() ?? initialTasks);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(tasks));
+  }, [tasks]);
 
   const addTask = (task: Omit<Task, "id" | "createdAt" | "updatedAt">) => {
     const newTask: Task = {

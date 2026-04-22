@@ -348,6 +348,10 @@ const Dashboard: React.FC = () => {
           </TabsContent>
         </Tabs>
       )}
+
+      <p className="mt-8 text-center text-xs text-muted-foreground">
+        Demo notice: all patient names, identifiers, and task data shown in TASKR are fictional.
+      </p>
       
       <TaskForm 
         open={isFormOpen} 

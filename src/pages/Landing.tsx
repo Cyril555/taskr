@@ -70,84 +70,100 @@ const Landing = () => {
             <Link to="/" className="transition-opacity hover:opacity-90">
               <img src={taskrLogo} alt="TASKR" className="h-9 md:h-11 w-auto" />
             </Link>
-            <Button
-              asChild
-              className="rounded-full bg-medical-blue px-5 font-medium text-white shadow-lg shadow-medical-blue/25 transition hover:bg-medical-light-blue hover:text-medical-dark-blue"
-            >
-              <Link to="/dashboard">Try demo</Link>
-            </Button>
+            <p className="text-sm text-muted-foreground">Ward task coordination</p>
           </div>
         </header>
 
         <main>
-          <section className="container px-4 md:px-6 pt-20 pb-16 md:pt-28 md:pb-24 max-w-4xl mx-auto text-center">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-medical-blue mb-6">
-              Ward task coordination
-            </p>
-            <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground mb-6 text-balance leading-[1.1]">
-              Keep ward rounds visible,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-medical-blue to-medical-dark-blue">
-                patient by patient
-              </span>
-            </h1>
-            <p className="text-base md:text-lg text-muted-foreground/90 max-w-2xl mx-auto mb-12 leading-relaxed text-pretty font-light">
-              TASKR is a lightweight board for inpatient teams: one place to capture practical jobs,
-              prescribing follow-ups, referrals, and discharge work—without losing who it belongs to.
-            </p>
-            <Button
-              asChild
-              size="lg"
-              className="h-12 rounded-full bg-medical-blue px-8 text-base font-medium text-white shadow-lg shadow-medical-blue/30 transition hover:bg-medical-light-blue hover:text-medical-dark-blue"
-            >
-              <Link to="/dashboard">Try demo</Link>
-            </Button>
+          <section className="container px-4 md:px-6 pt-16 pb-14 md:pt-24 md:pb-20 max-w-6xl mx-auto">
+            <div className="grid gap-10 md:grid-cols-2 md:items-center">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-[0.2em] text-medical-blue mb-6">
+                  Ward task coordination
+                </p>
+                <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground mb-6 text-balance leading-[1.1]">
+                  Keep ward rounds visible,{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-medical-blue to-medical-dark-blue">
+                    patient by patient
+                  </span>
+                </h1>
+                <p className="text-base md:text-lg text-muted-foreground/90 max-w-xl mb-8 leading-relaxed text-pretty font-light">
+                  TASKR is a lightweight board for inpatient teams: one place to capture practical
+                  jobs, prescribing follow-ups, referrals, and discharge work without losing who it
+                  belongs to.
+                </p>
+                <Button
+                  asChild
+                  size="lg"
+                  className="h-12 rounded-full bg-medical-blue px-8 text-base font-medium text-white shadow-lg shadow-medical-blue/30 transition hover:bg-medical-light-blue hover:text-medical-dark-blue"
+                >
+                  <Link to="/dashboard">Try demo</Link>
+                </Button>
+              </div>
+
+              <Card className="rounded-2xl border border-medical-blue/20 bg-medical-blue/[0.04] shadow-sm">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg">Validated from frontline interviews</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-sm text-medical-dark-blue font-medium">
+                    6 junior doctors interviewed all corroborated manual ward-job tracking as inefficient.
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Common issues were duplicated jobs, missed handovers, and poor visibility across
+                    practical, prescribing, referral, and discharge tasks.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </section>
 
           <div className="container max-w-5xl px-4 md:px-6 mx-auto">
             <Separator className="bg-border" />
           </div>
 
-          <section className="container px-4 md:px-6 py-20 md:py-28 max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-14 md:gap-20 items-start">
-              <div className="space-y-4">
-                <h2 className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
-                  The problem
-                </h2>
-                <p className="text-lg text-foreground/90 leading-relaxed font-light">
-                  Ward rounds generate a mix of jobs that cut across disciplines—bloods, scripts,
-                  specialty referrals, discharge paperwork. When those live on scraps of paper,
-                  scattered chats, or mental checklists, it is easy for work to slip between handoffs
-                  or get duplicated.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  Teams need a shared view that stays organized by{" "}
-                  <span className="text-foreground font-normal">patient</span> and by{" "}
-                  <span className="text-foreground font-normal">type of work</span>, so nothing
-                  important gets lost in the noise.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <h2 className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
-                  How TASKR helps
-                </h2>
-                <p className="text-lg text-foreground/90 leading-relaxed font-light">
-                  TASKR gives you a single ward-oriented surface: add and track tasks with priorities
-                  and due dates, filter by category, and see progress at a glance—built for the rhythm
-                  of ward work, not generic project management.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  This deployment ships with{" "}
-                  <span className="text-foreground font-normal">demo</span> sample patients and tasks
-                  so you can explore the flow without connecting to a live system.
-                </p>
-              </div>
+          <section className="container px-4 md:px-6 py-16 md:py-20 max-w-6xl mx-auto">
+            <div className="grid gap-6 md:grid-cols-2">
+              <Card className="rounded-2xl border border-border bg-card shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-xl">The problem</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-muted-foreground leading-relaxed">
+                    Ward rounds generate a mix of jobs that cut across disciplines. When these live on
+                    scraps of paper, scattered messages, or mental checklists, work can slip between
+                    handovers or get duplicated.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Teams need a shared view organized by{" "}
+                    <span className="text-foreground font-medium">patient</span> and{" "}
+                    <span className="text-foreground font-medium">job type</span>.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-2xl border border-border bg-card shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-xl">How TASKR helps</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-muted-foreground leading-relaxed">
+                    TASKR gives teams one ward-oriented board to add tasks, track priorities, and
+                    monitor progress by category, designed for the pace of ward work.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    The demo includes synthetic patient/task data so you can explore the workflow
+                    safely.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </section>
 
           <section className="border-y border-border bg-slate-50/70 py-20 md:py-24">
             <div className="container px-4 md:px-6 max-w-5xl mx-auto">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-center mb-3">
-                What you can try
+                Core Capabilities
               </h2>
               <p className="text-center text-muted-foreground text-sm md:text-base max-w-xl mx-auto mb-14 font-light">
                 Everything below is available in the interactive demo.
@@ -171,15 +187,6 @@ const Landing = () => {
                     </CardContent>
                   </Card>
                 ))}
-              </div>
-              <div className="flex justify-center mt-14">
-                <Button
-                  asChild
-                  size="lg"
-                  className="h-12 rounded-full bg-medical-blue px-8 text-base font-medium text-white shadow-lg shadow-medical-blue/25 transition hover:bg-medical-light-blue hover:text-medical-dark-blue"
-                >
-                  <Link to="/dashboard">Try demo</Link>
-                </Button>
               </div>
             </div>
           </section>
